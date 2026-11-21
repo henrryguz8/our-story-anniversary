@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#090811" />
+    <meta name="description" content="Our Story — una pequeña historia hecha de recuerdos, música y amor." />
+    <title>Our Story ♡</title>
+    <link rel="preload" as="image" href="/images/photo-01.webp" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+    <div id="petals" aria-hidden="true"></div>
+
+    <main id="app">
+      <section id="universe-screen" class="screen universe-screen" aria-label="Un universo de recuerdos">
+        <canvas id="universe-canvas" aria-hidden="true"></canvas>
+        <div class="universe-nebula universe-nebula-one"></div>
+        <div class="universe-nebula universe-nebula-two"></div>
+        <div class="universe-content">
+          <div class="universe-heading">
+            <span class="universe-kicker">A LITTLE UNIVERSE, MADE OF US</span>
+            <h1>A universe<br /><em>for us</em></h1>
+            <p>Every little star holds a piece of our story.</p>
+          </div>
+          <div class="universe-actions">
+            <span class="universe-instruction is-hidden" id="universe-instruction">The stars are finding their heart</span>
+            <button id="universe-enter-button" class="universe-enter-button is-hidden" type="button">Touch the heart to begin <span>♡</span></button>
+            <span class="universe-footnote">MADE OF A THOUSAND LITTLE MOMENTS</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="intro-screen" class="screen intro-screen is-hidden" aria-labelledby="intro-title">
+        <div class="intro-stars" aria-hidden="true"></div>
+        <div class="intro-content">
+          <div class="tiny-kicker"><span></span> A LITTLE JOURNEY THROUGH US <span></span></div>
+          <div class="envelope-wrap" aria-hidden="true">
+            <div class="envelope-glow"></div>
+            <div class="envelope">
+              <div class="envelope-back"></div>
+              <div class="letter">
+                <span class="letter-heart">♡</span>
+                <span class="letter-script">for you</span>
+              </div>
+              <div class="envelope-front"></div>
+              <div class="envelope-flap"></div>
+              <div class="wax-seal">♡</div>
+            </div>
+          </div>
+          <p class="intro-overline">A story written by two hearts</p>
+          <h1 id="intro-title">Our <em>Story</em></h1>
+          <p class="intro-copy">Hay recuerdos que merecen volver a sentirse.<br />Este pequeño rincón es para nosotros.</p>
+          <button id="begin-button" class="primary-button" type="button">
+            <span>Open our story</span><span class="button-arrow">↗</span>
+          </button>
+          <p class="intro-footnote"><span class="sound-dot"></span> Best experienced with sound</p>
+        </div>
+        <div class="intro-bottom">MADE WITH LOVE <span>✧</span> JUST FOR YOU</div>
+      </section>
+
+      <section id="story-screen" class="screen story-screen is-hidden" aria-label="Nuestra historia">
+        <header class="story-header">
+          <div class="brand-mark">O<span>♡</span>S</div>
+          <div class="story-heading">
+            <span class="eyebrow">A JOURNEY THROUGH US</span>
+            <span class="header-title">Our Story</span>
+          </div>
+          <div class="header-right">
+            <span id="scene-counter" class="scene-counter">01 <i>/ 30</i></span>
+            <button id="pause-button" class="sound-button" type="button" aria-label="Pausar música" title="Pausar música">
+              <span class="sound-bars"><i></i><i></i><i></i><i></i></span>
+            </button>
+          </div>
+        </header>
+
+        <div class="progress-wrap" aria-label="Progreso de la historia">
+          <div class="progress-track"><div id="progress-fill" class="progress-fill"></div></div>
+          <div class="progress-meta"><span id="progress-label">THE BEGINNING</span><span id="time-label">00:00 / 03:51</span></div>
+        </div>
+
+        <div class="story-body">
+          <div id="memory-view" class="memory-view">
+            <div class="photo-halo"></div>
+            <div class="photo-frame">
+              <img id="photo-backdrop" class="photo-backdrop" src="" alt="" aria-hidden="true" />
+              <img id="memory-image" class="memory-image" src="/images/photo-01.webp" alt="Un recuerdo de nuestra historia" />
+              <div id="memory-flip-card" class="memory-flip-card is-hidden" role="button" tabindex="0" aria-label="Girar fotografía para leer un mensaje">
+                <div class="memory-flip-inner">
+                  <div class="memory-flip-face memory-flip-front"><img id="memory-flip-image" src="/images/photo-12.webp" alt="Recuerdo especial" /><span class="flip-prompt">TOUCH TO TURN <b>↻</b></span></div>
+                  <div class="memory-flip-face memory-flip-back"><span class="flip-back-kicker">A LITTLE NOTE FOR YOU</span><h3 id="memory-flip-title"></h3><p id="memory-flip-message"></p><span id="memory-flip-english" class="flip-back-english"></span><span class="flip-prompt">TOUCH TO RETURN <b>♡</b></span></div>
+                </div>
+              </div>
+              <div class="photo-vignette"></div>
+              <div id="memory-effect-layer" class="memory-effect-layer" aria-hidden="true"></div>
+              <div id="tulip-view" class="special-overlay tulip-overlay is-hidden">
+                <span class="special-overlay-kicker">A LITTLE SURPRISE FOR YOU</span>
+                <h2>Some things keep <em>blooming</em>.</h2>
+                <button id="tulip-button" class="tulip-button" type="button" aria-label="Toca el tulipán para abrirlo">
+                  <svg class="tulip-svg" viewBox="0 0 220 280" role="img" aria-label="Tulipán lila que se abre al tocarlo">
+                    <defs>
+                      <linearGradient id="petalA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff0fa"/><stop offset=".52" stop-color="#cb8be4"/><stop offset="1" stop-color="#8452b5"/></linearGradient>
+                      <linearGradient id="petalB" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff7fc"/><stop offset="1" stop-color="#bd7bd8"/></linearGradient>
+                      <linearGradient id="stem" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#466c59"/><stop offset="1" stop-color="#9cc49b"/></linearGradient>
+                    </defs>
+                    <path class="tulip-stem" d="M110 116 C105 164 119 204 112 260" fill="none" stroke="url(#stem)" stroke-width="7" stroke-linecap="round"/>
+                    <path class="tulip-leaf leaf-left" d="M109 198 C60 154 36 183 91 224 C101 229 108 217 109 198Z" fill="#6f9b78"/>
+                    <path class="tulip-leaf leaf-right" d="M115 224 C155 179 187 196 128 246 C120 250 115 239 115 224Z" fill="#86ae8a"/>
+                    <g class="tulip-bloom">
+                      <path class="petal petal-left" d="M111 125 C63 119 47 76 72 43 C86 62 105 73 111 125Z" fill="url(#petalA)"/>
+                      <path class="petal petal-center" d="M109 125 C81 86 92 28 111 9 C137 37 140 89 109 125Z" fill="url(#petalB)"/>
+                      <path class="petal petal-right" d="M109 125 C119 71 150 50 169 46 C183 91 153 120 109 125Z" fill="url(#petalA)"/>
+                      <path class="petal petal-inner" d="M108 124 C97 83 110 54 121 35 C139 75 133 103 108 124Z" fill="#e8b7ed" opacity=".9"/>
+                    </g>
+                  </svg>
+                  <span class="tulip-touch">TOUCH TO BLOOM <b>♡</b></span>
+                </button>
+                <span class="special-overlay-foot">A little moment, just for you</span>
+              </div>
+              <div id="tulip-petal-burst" class="tulip-petal-burst" aria-hidden="true"></div>
+              <div id="scratch-view" class="special-overlay scratch-overlay is-hidden">
+                <span class="special-overlay-kicker">A MEMORY IS WAITING</span>
+                <h2>One more little <em>surprise</em>.</h2>
+                <p>Scratch three times to reveal what I saved for you.</p>
+                <div class="scratch-frame">
+                  <img id="scratch-image" src="/images/photo-24.webp" alt="Un recuerdo esperando ser revelado" />
+                  <canvas id="scratch-canvas" aria-label="Área interactiva: raspa tres veces para revelar la fotografía"></canvas>
+                  <div class="scratch-label"><span>✧</span> THREE LITTLE SCRATCHES <span>✧</span></div>
+                </div>
+                <div class="scratch-progress" aria-hidden="true"><span id="scratch-progress-fill"></span></div>
+                <span id="scratch-progress-label" class="scratch-progress-label">Scratch 1 of 3 · 0%</span>
+                <span class="special-overlay-foot">Some memories are worth uncovering</span>
+              </div>
+              <div class="photo-index" id="photo-index">MEMORY 01</div>
+              <button id="expand-photo" class="expand-button" type="button" aria-label="Ver historia en modo pantalla completa" title="Ver en modo pantalla completa">⤢</button>
+            </div>
+            <div class="memory-caption">
+              <span id="memory-kicker" class="memory-kicker">THE FIRST PAGE</span>
+              <h2 id="memory-title">Donde todo comenzó</h2>
+              <p id="memory-message">No imaginaba cuántos recuerdos cabrían en un primer instante.</p>
+              <span id="memory-english" class="memory-english">and somehow, here we are.</span>
+            </div>
+          </div>
+
+          <div class="story-navigation">
+            <button id="previous-button" class="nav-arrow" type="button" aria-label="Escena anterior">←</button>
+            <span class="swipe-hint">tap the heart to continue</span>
+            <button id="next-button" class="next-heart" type="button" aria-label="Continuar al siguiente recuerdo"><span>♡</span><i>CONTINUE</i></button>
+          </div>
+        </div>
+        <div class="story-bottom"><span>EVERY MOMENT, A PART OF US</span><span class="bottom-star">✧</span><span>MADE OF MEMORIES</span></div>
+      </section>
+
+      <section id="wish-screen" class="screen wish-screen is-hidden" aria-label="Un deseo para nuestro futuro">
+        <canvas id="wish-star-canvas" aria-hidden="true"></canvas>
+        <div class="wish-glow wish-glow-one"></div><div class="wish-glow wish-glow-two"></div>
+        <div class="wish-content">
+          <span class="wish-kicker">A MOMENT JUST FOR US</span>
+          <h1 id="wish-title">My love,<br /><em>make a wish...</em></h1>
+          <p id="wish-copy">Si pudiera pedir un deseo, sería seguir creando recuerdos contigo.</p>
+          <button id="wish-lantern" class="wish-lantern" type="button" aria-label="Soltar nuestra linterna de los deseos">
+            <span class="lantern-halo"></span><span class="lantern-cap"></span><span class="lantern-body"><i class="lantern-flame"></i><i class="lantern-glow"></i></span><span class="lantern-base"></span>
+            <span class="wish-touch-label">TOUCH TO RELEASE <b>✧</b></span>
+          </button>
+          <p id="wish-after" class="wish-after is-hidden">If I could make one wish...<br /><em>it would be a thousand more memories with you.</em></p>
+        </div>
+        <div id="wish-particle-field" class="wish-particle-field" aria-hidden="true"></div>
+      </section>
+
+      <section id="final-screen" class="screen final-screen is-hidden" aria-label="El futuro de nuestra historia">
+        <canvas id="star-canvas" aria-hidden="true"></canvas>
+        <div class="final-vignette"></div>
+        <div class="final-content">
+          <span class="final-kicker">AND THIS IS ONLY THE BEGINNING</span>
+          <div class="final-heart">♡</div>
+          <h1>Our story<br /><em>continues</em><span class="pulse-dots" aria-label="...">.<i>.</i><b>.</b><i>.</i><b>.</b></span></h1>
+          <p class="final-main">Esta historia no termina aquí.<br />Todavía nos quedan miles de recuerdos por escribir.</p>
+          <p class="final-promise">Y si pudiera volver a elegir,<br />volvería a elegirte a ti.</p>
+          <div class="final-divider"><span></span> ∞ <span></span></div>
+          <p class="final-last">For thousands of years more.</p>
+          <span id="final-signature" class="final-signature">Always you. Always us.</span>
+          <button id="replay-button" class="replay-button" type="button">↺ &nbsp; Relive our story</button>
+          <button id="open-garden-button" class="open-garden-button is-hidden" type="button" aria-label="Abrir el jardín secreto" title="A little secret is waiting"><span>♡</span><i>THE SECRET GARDEN</i></button>
+          <span id="finished-label" class="finished-label">THE MUSIC MAY END. OUR STORY DOESN'T.</span>
+        </div>
+      </section>
+
+      <div id="photo-modal" class="photo-modal is-hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button id="close-modal" class="modal-close" type="button" aria-label="Cerrar modo pantalla completa">×</button>
+        <article id="photo-modal-card" class="photo-modal-card">
+          <div class="photo-modal-media">
+            <img id="modal-image" src="" alt="Fotografía ampliada de nuestro recuerdo" />
+            <div id="modal-flip-card" class="memory-flip-card modal-memory-flip is-hidden" role="button" tabindex="0" aria-label="Girar fotografía para leer un mensaje">
+              <div class="memory-flip-inner">
+                <div class="memory-flip-face memory-flip-front"><img id="modal-flip-image" src="/images/photo-12.webp" alt="Recuerdo especial" /><span class="flip-prompt">TOUCH TO TURN <b>↻</b></span></div>
+                <div class="memory-flip-face memory-flip-back"><span class="flip-back-kicker">A LITTLE NOTE FOR YOU</span><h3 id="modal-flip-title"></h3><p id="modal-flip-message"></p><span id="modal-flip-english" class="flip-back-english"></span><span class="flip-prompt">TOUCH TO RETURN <b>♡</b></span></div>
+              </div>
+            </div>
+            <div id="cinema-effect-layer" class="memory-effect-layer" aria-hidden="true"></div>
+          </div>
+          <div class="photo-modal-caption">
+            <span id="modal-kicker" class="memory-kicker">MEMORY 01</span>
+            <h2 id="modal-title">Donde todo comenzó</h2>
+            <p id="modal-message">No imaginaba cuántos recuerdos cabrían en un primer instante.</p>
+            <span id="modal-english" class="memory-english">and somehow, here we are.</span>
+          </div>
+        </article>
+        <div id="cinema-controls" class="cinema-controls is-visible" aria-label="Controles del modo cine">
+          <button id="cinema-back-button" type="button" aria-label="Retroceder 10 segundos"><span>↶</span><small>10</small></button>
+          <button id="cinema-play-button" class="cinema-play-button" type="button" aria-label="Pausar historia"><span id="cinema-play-icon">Ⅱ</span></button>
+          <button id="cinema-forward-button" type="button" aria-label="Avanzar 10 segundos"><span>↷</span><small>10</small></button>
+        </div>
+        <span class="cinema-hint">THE STORY KEEPS MOVING · TAP TO SHOW CONTROLS</span>
+      </div>
+
+      <section id="garden-screen" class="screen garden-screen is-hidden" aria-label="Nuestro jardín secreto">
+        <div class="garden-aurora garden-aurora-one"></div><div class="garden-aurora garden-aurora-two"></div>
+        <div class="garden-stars" aria-hidden="true"></div>
+        <svg class="garden-gradient-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs>
+          <linearGradient id="gardenHeartPale" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff0ff"/><stop offset=".42" stop-color="#d7b7ec"/><stop offset="1" stop-color="#8f6aa9"/></linearGradient>
+          <linearGradient id="gardenHeartRuby" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffc2d3"/><stop offset=".34" stop-color="#ef3d69"/><stop offset=".75" stop-color="#9d123d"/><stop offset="1" stop-color="#ff7898"/></linearGradient>
+        </defs></svg>
+        <button id="garden-back-final" class="garden-back-final" type="button"><span>←</span> BACK TO OUR ENDING</button>
+        <div class="garden-heading"><span>THE LITTLE THINGS WE KEEP</span><h1>Our <em>secret garden</em></h1><p>Five little hearts. Five memories waiting to bloom.</p></div>
+        <div id="garden-flower-field" class="garden-flower-field" aria-hidden="true"></div>
+        <div id="garden-hearts" class="garden-hearts" aria-label="Cinco recuerdos secretos"></div>
+        <div id="garden-memory-detail" class="garden-memory-detail is-hidden" role="dialog" aria-modal="true" aria-labelledby="garden-memory-title">
+          <button id="garden-return-button" class="garden-return-button" type="button"><span>↶</span> RETURN TO THE GARDEN</button>
+          <article id="garden-memory-card" class="garden-memory-card">
+            <div class="garden-memory-photo-wrap"><img id="garden-memory-image" src="" alt="" /><span class="garden-photo-glow"></span></div>
+            <div class="garden-memory-copy"><span class="garden-memory-kicker">A MEMORY KEPT IN OUR HEARTS</span><h2 id="garden-memory-title"></h2><p id="garden-memory-message"></p><span id="garden-memory-english"></span></div>
+          </article>
+        </div>
+        <div class="garden-footer"><span>EVERY HEART HOLDS A LITTLE PIECE OF US</span><span id="garden-progress-label">0 OF 5 MEMORIES DISCOVERED</span></div>
+      </section>
+
+      <audio id="story-audio" src="/audio/music.mp3" preload="metadata"></audio>
+      <div id="music-control" class="music-control is-hidden">
+        <button id="music-icon-button" type="button" aria-label="Pausar música" title="Pausar o reanudar música"><span class="music-note">♫</span></button>
+        <div class="music-info"><span>NOW PLAYING</span><strong>River Flows in You</strong></div>
+        <input id="volume-control" type="range" min="0" max="1" step="0.05" value="0.68" aria-label="Volumen de la música" />
+      </div>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
